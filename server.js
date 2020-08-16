@@ -1,13 +1,13 @@
 const express = require('express');
-// const helmet = require('helmet');
-
-// const fruitsRouter = require('../fruits/fruits-router.js');
 
 const server = express();
 
-// server.use(helmet());
+const router = require('./router/routes.js')
 server.use(express.json());
+server.use('/api', router)
 
-// server.use('/api/fruits', fruitsRouter);
+server.get('/', (req, res) => {
+    res.send('Server running...')
+})
 
 module.exports = server;
