@@ -1,13 +1,20 @@
 const express = require('express');
 
+const projectRouter= require('./routers/project-router');
+const resourceRouter = require('./routers/resource-router')
+const taskRouter = require('./routers/task-router')
 const server = express();
 
-const router = require('./router/routes.js')
-server.use(express.json());
-server.use('/api', router)
 
-server.get('/', (req, res) => {
-    res.send('Server running...')
+server.use(express.json());
+server.use('/api/projects', projectRouter)
+server.use('/api/resources', resourceRouter)
+server.use('/api/tasks', taskRouter)
+
+server.use((err, req, res, next)=>{
+    console.log(err)
+    res.status(500).json({message:'something went wrong'})
 })
+
 
 module.exports = server;

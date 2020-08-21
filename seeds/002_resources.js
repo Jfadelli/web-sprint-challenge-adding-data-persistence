@@ -5,10 +5,9 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('resources').insert([
-        {r_id: 1, r_name: 'rowValue1', r_description: 'rowValue1'},
-        {r_id: 2, r_name: 'rowValue2', r_description: 'rowValue2'},
-        {r_id: 3, r_name: 'rowValue3', r_description: 'rowValue3'},
-
+        {id: 1, description: 'blah1', name: 'money'},
+        {id: 2, description: 'blah2', name: 'time'},
+        {id: 3, description: 'blah3', name: 'magic'}
       ]);
     });
 };
